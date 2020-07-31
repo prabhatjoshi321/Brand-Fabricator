@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(new Scaffold(
+    body: new Center(
+      child: new RaisedButton(
+        onPressed: _launchURL,
+        child: new Text('Show Flutter homepage'),
+      ),
+    ),
+  ));
+}
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Web Views',
-      theme: ThemeData(
-          primarySwatch: Colors.blue,
-          fontFamily: "Arial",
-          textTheme: TextTheme(
-              button: TextStyle(color: Colors.white, fontSize: 18.0),
-              title: TextStyle(color: Colors.red))),
-      home: Home(),
-    );
+_launchURL() async {
+  const url = 'https://flutter.io';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
   }
 }
