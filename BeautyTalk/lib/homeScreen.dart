@@ -12,17 +12,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: FlatButton(
-          child: Text("Open Webpage"),
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) => MyWebView(
-                      title: "",
-                      selectedUrl: "https://beautytalk.in/",
-                    )));
-          },
-        ),
-      ),
+          child: WebView(
+        initialUrl: 'https://beautytalk.in/',
+        javascriptMode: JavascriptMode.unrestricted,
+      )),
     );
   }
 }
