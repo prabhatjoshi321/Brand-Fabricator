@@ -10,6 +10,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
+  initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -18,12 +23,14 @@ class _HomeScreenState extends State<HomeScreen> {
         primaryColorDark: const Color(0xFFec649c),
         accentColor: const Color(0xFFec649c),
       ),
-      home: MyHomePage(),
+      home: MyHomePage(title: 'Webview Widget'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
+  final String title;
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
